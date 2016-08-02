@@ -2,13 +2,15 @@
 
 module.exports = {
   app: {
-    title: 'MEAN.JS',
-    description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
-    keywords: 'mongodb, express, angularjs, node.js, mongoose, passport',
+    title: 'Echo',
+    description: 'Reporting Services for GED Ecosystem',
+    keywords: 'mongodb, express, angularjs, node.js, mongoose',
     googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
   },
   port: process.env.PORT || 3000,
   host: process.env.HOST || '0.0.0.0',
+  mercuryDB: 'mongodb://mercury:passwOrd@mercury-sit3.d2-tdbfg.com:27017/mercury',
+  echoDB: 'mongodb://mercury:passwOrd@mercury-sit3.d2-tdbfg.com:27017/mercury',
   templateEngine: 'swig',
   // Session Cookie settings
   sessionCookie: {
@@ -45,5 +47,15 @@ module.exports = {
         fileSize: 1 * 1024 * 1024 // Max file size in bytes (1 MB)
       }
     }
+  },
+  porfolioMap: {
+    '1808': { name: 'SGP CADARB' },
+    '1928': { name: 'GED SEASG LIHEDGE' },
+    '1929': { name: 'GED SEASG GLOBARD' },
+    '1930': { name: 'GED DEASG INTDLTA1' },
+    '1922': { name: 'GED TDBTO CLHEDGE' },
+    '1937': { name: 'GED TDSTO CLHEDGE' },
+    '1924': { name: 'GED TDBTO INTDLTA1' }
+
   }
 };

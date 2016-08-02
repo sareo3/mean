@@ -4,8 +4,8 @@ module.exports = {
   secure: {
     ssl: true,
     privateKey: './config/sslcerts/key.pem',
-    certificate: './config/sslcerts/cert.pem',
-    //caBundle: './config/sslcerts/cabundle.crt'
+    certificate: './config/sslcerts/cert.pem'
+    // caBundle: './config/sslcerts/cabundle.crt'
   },
   port: process.env.PORT || 8443,
   // Binding to 127.0.0.1 is safer in production.
@@ -23,6 +23,20 @@ module.exports = {
     // logging with Morgan - https://github.com/expressjs/morgan
     // Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'
     format: process.env.LOG_FORMAT || 'combined',
+    options: {
+      // steam defaults to process.stdout
+      // Uncomment/comment to toggle the logging to a log on the file system
+      stream: {
+        directoryPath: process.env.LOG_DIR_PATH || process.cwd(),
+        fileName: process.env.LOG_FILE || 'access.log',
+        rotatingLogs: {
+          active: process.env.LOG_ROTATING_ACTIVE === 'true',
+          fileName: process.env.LOG_ROTATING_FILE || 'access-%DATA%.log',
+          frequency: process.env.LOG_ROTATING_FREQUENCY || 'daily',
+          verbose: process.env.LOG_ROTATING_VERBOSE === 'true'
+        }
+      }
+    },
     fileLogger: {
       directoryPath: process.env.LOG_DIR_PATH || process.cwd(),
       fileName: process.env.LOG_FILE || 'app.log',

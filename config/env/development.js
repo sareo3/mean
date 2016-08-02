@@ -3,7 +3,15 @@
 var defaultEnvConfig = require('./default');
 
 module.exports = {
+  secure: {
+    ssl: true,
+    privateKey: './config/sslcerts/key.pem',
+    certificate: './config/sslcerts/cert.pem'
+    // caBundle: './config/sslcerts/cabundle.crt'
+  },
   db: {
+    // uri: 'mongodb://mercury:passw0rd@mercury-sit3.d2-tdbfg.com:27017/mercury',
+    // uri:'mongodb://wvd00140:27017/echo',
     uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean-dev',
     options: {
       user: '',
